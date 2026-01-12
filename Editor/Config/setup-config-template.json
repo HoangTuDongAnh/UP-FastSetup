@@ -1,0 +1,51 @@
+{
+  "projectName": "__MyGame",
+  "rootNamespace": "HoangTuDongAnh",
+  "folders": [
+    "Assets/3rdParty",
+    "Assets/Plugins",
+    "Assets/Resources",
+    "Assets/Settings",
+    "Assets/_Core",
+    "Assets/{ProjectName}/Art/Animation",
+    "Assets/{ProjectName}/Art/Material",
+    "Assets/{ProjectName}/Art/Model",
+    "Assets/{ProjectName}/Art/Sprite",
+    "Assets/{ProjectName}/Art/Texture",
+    "Assets/{ProjectName}/Art/Shader",
+    "Assets/{ProjectName}/Audio/Music",
+    "Assets/{ProjectName}/Audio/Sound",
+    "Assets/{ProjectName}/Audio/Mixer",
+    "Assets/{ProjectName}/Code/Script/_Common/Const",
+    "Assets/{ProjectName}/Code/Script/_Common/Helper",
+    "Assets/{ProjectName}/Code/Script/_Common/Util",
+    "Assets/{ProjectName}/Code/Script/Gameplay/Camera",
+    "Assets/{ProjectName}/Code/Script/Gameplay/Enemy",
+    "Assets/{ProjectName}/Code/Script/Gameplay/Player",
+    "Assets/{ProjectName}/Code/Script/Gameplay/Projectile",
+    "Assets/{ProjectName}/Code/Script/UI/Home",
+    "Assets/{ProjectName}/Code/Script/UI/Ingame",
+    "Assets/{ProjectName}/Code/Script/UI/Popup",
+    "Assets/{ProjectName}/Code/Script/Shader",
+    "Assets/{ProjectName}/Design/Config",
+    "Assets/{ProjectName}/Design/Prefab/Character",
+    "Assets/{ProjectName}/Design/Prefab/Environment",
+    "Assets/{ProjectName}/Design/Prefab/UI",
+    "Assets/{ProjectName}/Design/Scene"
+  ],
+  "modules": [
+    {
+      "name": "Ingame Console",
+      "url": "https://github.com/NguyenVietHoang725/UP-IngameDebugConsole.git",
+      "path": "Assets/_Core/Debug/IngameConsole"
+    }
+  ],
+
+  "bootstrap": {
+    "sceneName": "Bootstrap",
+    "savePath": "Assets/{ProjectName}/Design/Scene",
+    "systemPrefabs": [
+      "Assets/_Core/Debug/IngameConsole/Prefabs/IngameDebugConsole.prefab"
+    ]
+  }
+}

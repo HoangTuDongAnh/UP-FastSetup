@@ -1,0 +1,18 @@
+{
+  "name": "com.hoangtudonganh.fastsetup",
+  "version": "1.0.0",
+  "displayName": "UP Fast Setup",
+  "description": "Công cụ tự động hóa khởi tạo dự án Unity, tạo cấu trúc thư mục và cài đặt module Git Submodules.",
+  "unity": "2021.3",
+  "author": {
+    "name": "HoangTuDongAnh",
+    "email": "hoangnguyen72.dev@gmail.com",
+    "url": "https://github.com/HoangTuDongAnh"
+  },
+  "keywords": [
+    "setup",
+    "tool",
+    "automation",
+    "structure"
+  ]
+}
