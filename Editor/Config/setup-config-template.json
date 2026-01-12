@@ -6,7 +6,7 @@
     "Assets/Plugins",
     "Assets/Resources",
     "Assets/Settings",
-    "Assets/_Core",
+    "Assets/_MyCore",
     "Assets/{ProjectName}/Art/Animation",
     "Assets/{ProjectName}/Art/Material",
     "Assets/{ProjectName}/Art/Model",
@@ -37,7 +37,7 @@
     {
       "name": "Ingame Console",
       "url": "https://github.com/NguyenVietHoang725/UP-IngameDebugConsole.git",
-      "path": "Assets/_Core/Debug/IngameConsole"
+      "path": "Assets/_MyCore/Debug/IngameConsole"
     }
   ],
 
@@ -45,7 +45,7 @@
     "sceneName": "Bootstrap",
     "savePath": "Assets/{ProjectName}/Design/Scene",
     "systemPrefabs": [
-      "Assets/_Core/Debug/IngameConsole/Prefabs/IngameDebugConsole.prefab"
+      "Assets/_MyCore/Debug/IngameConsole/Prefabs/IngameDebugConsole.prefab"
     ]
   }
 }
