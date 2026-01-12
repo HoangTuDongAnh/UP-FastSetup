@@ -77,6 +77,7 @@ Assets/
 ├── Plugins/                  <-- Native Libraries (.dll, .so, .jar)
 ├── Resources/                <-- (Avoid using if possible)
 └── Settings/                 <-- Project Configs (URP, Input System)
+```
 
 ---
 ## 🛠️ Prerequisites
