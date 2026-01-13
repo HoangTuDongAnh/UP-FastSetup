@@ -114,7 +114,7 @@ You can fully customize the setup process by editing the JSON file.
   "modules": [
     {
       "name": "Audio Module",
-      "url": "[https://github.com/YourUsername/UP-Audio-Manager.git](https://github.com/YourUsername/UP-Audio-Manager.git)",
+      "url": "https://github.com/YourUsername/UP-Audio-Manager.git",
       "path": "Assets/_MyCore/Audio"
     }
   ],
