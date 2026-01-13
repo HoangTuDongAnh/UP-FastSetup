@@ -1,30 +1,11 @@
-<div align="center">
-
-# 🇬🇧 English | [🇻🇳 Tiếng Việt](README_VI.md)
-
-</div>
-
----
-
 # UP-FastSetup 🚀
 
 [![Unity Version](https://img.shields.io/badge/Unity-2021.3%2B-blue.svg)](https://unity.com/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-**UP-FastSetup** is a powerful Project Bootstrapper for Unity. It automates the tedious process of setting up a new project by generating folder structures, installing Git Submodules, and composing the initial Bootstrap scene with necessary system prefabs.
+**UP-FastSetup** is a Unity tool that automates project bootstrapping. It sets up folder structures, installs Git Submodules, and creates a Bootstrap scene with one click.
 
 Designed for a **Modular Architecture** workflow (using Git Submodules + Fork).
-
----
-
-## ✨ Key Features
-
-* **📂 Automated Folder Structure**: Generates a standardized, clean folder hierarchy (Art, Code, Design...) based on your configuration.
-* **🔗 Git Submodule Integration**: Automatically adds shared modules (Core, Audio, UI) via `git submodule add`, keeping your project modular.
-* **🎬 Scene Composer**: Auto-creates a `Bootstrap` scene, configures Build Settings, and spawns essential System Prefabs (e.g., AudioManager, UIRoot).
-* **⚙️ Configuration as Code**: Everything is driven by a simple JSON file.
-* **📝 Dynamic Naming**: Supports placeholders like `{ProjectName}` to adapt to any project identity.
-* **✅ Git Ready**: Automatically handles `.gitkeep` for empty folders to ensure they are tracked by Git.
 
 ---
 
@@ -41,7 +22,7 @@ The tool generates a **Role-based** and **Modular** folder structure designed fo
 
 ```text
 Assets/
-├── __MyGame/                 <-- 🏠 PROJECT SPECIFIC (High Priority)
+├── __MyGame/                
 │   ├── Art/                  # [Artist Area] - Raw assets & visuals
 │   │   ├── Animation/
 │   │   ├── Material/
@@ -146,3 +127,11 @@ You can fully customize the setup process by editing the JSON file.
   }
 }
 ```
+
+---
+
+## 🔗 References
+
+Inspired by: 
+- [NamPhuThuy](https://github.com/NamPhuThuy) - [UP-FastSetup](https://github.com/NamPhuThuy/UP-FastSetup) 
+- [tungcheng](https://github.com/tungcheng) - [FastSetup](https://github.com/tungcheng/FastSetup)
