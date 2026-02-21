@@ -1,0 +1,55 @@
+﻿{
+  "meta": {
+    "id": "general",
+    "name": "General",
+    "description": "A general-purpose folder layout for most Unity game projects.",
+    "tags": ["general", "default"],
+    "version": "1.0.0"
+  },
+  "config": {
+    "projectName": "MyGame",
+    "folders": [],
+    "folderGroups": [
+      {
+        "root": "Assets/__{ProjectName}",
+        "paths": [
+          "Art",
+          "Audio",
+          "Design",
+          "Prefabs",
+          "Scenes",
+          "UI",
+          "Code/Scripts",
+          "Code/Editor",
+          "Data",
+          "Localization",
+          "StreamingAssets",
+          "Addressables"
+        ]
+      },
+      {
+        "root": "Assets/_Shared",
+        "paths": [
+          "Art",
+          "Audio",
+          "Code",
+          "Data",
+          "UI",
+          "Tools"
+        ]
+      },
+      {
+        "root": "Assets/ThirdParty",
+        "paths": []
+      }
+    ],
+    "modules": [],
+    "bootstrap": {
+      "enabled": true,
+      "sceneName": "Bootstrap",
+      "savePath": "Assets/__{ProjectName}/Scenes",
+      "systemPrefabs": [],
+      "addToBuildSettings": true
+    }
+  }
+}

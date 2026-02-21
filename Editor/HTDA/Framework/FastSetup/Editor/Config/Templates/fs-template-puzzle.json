@@ -1,0 +1,54 @@
+﻿{
+  "meta": {
+    "id": "puzzle",
+    "name": "Puzzle",
+    "description": "Folder layout suitable for puzzle / match style games (levels, configs, UI).",
+    "tags": ["puzzle", "mobile"],
+    "version": "1.0.0"
+  },
+  "config": {
+    "projectName": "MyPuzzleGame",
+    "folders": [],
+    "folderGroups": [
+      {
+        "root": "Assets/__{ProjectName}",
+        "paths": [
+          "Art",
+          "Audio",
+          "Design/Levels",
+          "Design/Configs",
+          "Prefabs",
+          "Scenes",
+          "UI",
+          "Code/Scripts",
+          "Code/Editor",
+          "Data/Save",
+          "Localization",
+          "Addressables"
+        ]
+      },
+      {
+        "root": "Assets/_Shared",
+        "paths": [
+          "Art",
+          "Audio",
+          "Code",
+          "UI",
+          "Tools"
+        ]
+      },
+      {
+        "root": "Assets/ThirdParty",
+        "paths": []
+      }
+    ],
+    "modules": [],
+    "bootstrap": {
+      "enabled": true,
+      "sceneName": "Bootstrap",
+      "savePath": "Assets/__{ProjectName}/Scenes",
+      "systemPrefabs": [],
+      "addToBuildSettings": true
+    }
+  }
+}
