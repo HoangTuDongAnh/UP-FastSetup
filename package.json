@@ -1,0 +1,21 @@
+{
+  "name": "com.htda.framework.template",
+  "version": "0.1.0",
+  "displayName": "HTDA Framework – Template",
+  "description": "Template package for HTDA Framework modules (runtime/editor/tests/docs). Run Tools/setup_wizard.py to initialize.",
+  "unity": "2022.3",
+  "author": {
+    "name": "HTDA",
+    "url": "https://github.com/<YOUR_ORG>"
+  },
+  "keywords": [
+    "htda",
+    "framework",
+    "template",
+    "upm"
+  ],
+  "documentationUrl": "https://github.com/<YOUR_ORG>/HTDA-Framework-Template",
+  "changelogUrl": "https://github.com/<YOUR_ORG>/HTDA-Framework-Template/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://github.com/<YOUR_ORG>/HTDA-Framework-Template/blob/main/LICENSE.md",
+  "dependencies": {}
+}
