@@ -1,4 +1,4 @@
-# HTDA Framework – Template
+# HTDA Framework – FastSetup
 
 This is the documentation entry point for the package.
 

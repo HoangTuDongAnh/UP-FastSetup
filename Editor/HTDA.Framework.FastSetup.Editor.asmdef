@@ -1,8 +1,10 @@
 {
-  "name": "HTDA.Framework.Template",
-  "rootNamespace": "HTDA.Framework.Template",
+  "name": "HTDA.Framework.FastSetup.Editor",
+  "rootNamespace": "HTDA.Framework.FastSetup.Editor",
   "references": [],
-  "includePlatforms": [],
+  "includePlatforms": [
+    "Editor"
+  ],
   "excludePlatforms": [],
   "allowUnsafeCode": false,
   "overrideReferences": false,
