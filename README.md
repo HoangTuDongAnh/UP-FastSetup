@@ -1,32 +1,171 @@
-# HTDA Framework Template (UPM)
+# HTDA Framework – FastSetup
 
-This repository is a **Unity Package Manager (UPM) template** for creating new HTDA Framework modules.
+FastSetup is an **Editor-only** module of the HTDA Framework.
 
-## Quick start
+It helps bootstrap a Unity project by:
 
-1. Copy this folder as a new repository (recommended repo name: `HTDA-Framework-<ModuleName>`).
-2. Run the wizard:
+- Creating a standardized folder structure
+- Installing framework modules via Git submodules
+- Generating a Bootstrap scene
+- Supporting multiple project templates (General, Puzzle, Hypercasual, etc.)
+- Allowing export of custom folder templates with metadata
 
-```bash
-python Tools/setup_wizard.py
+---
+
+## 📦 Package Info
+
+- Package ID: `com.htda.framework.fastsetup`
+- Assembly: `HTDA.Framework.FastSetup.Editor`
+- Unity: `2022.3+`
+- Editor-only (no runtime code)
+
+---
+
+## 🚀 Features
+
+### 1️⃣ Create Project Config
+Creates a config file at:
+```
+ProjectSettings/HTDA/FastSetup/setup-config.json
 ```
 
-3. The wizard will:
-- rename package id (com.htda.framework.<suffix>)
-- rename assemblies and namespaces (HTDA.Framework.<ModuleName>)
-- optionally remove Runtime or Editor parts based on package type
+This file defines:
+- Folder structure
+- Framework modules to install
+- Bootstrap scene settings
 
-## Conventions
+---
 
-- Package id: com.htda.framework.<suffix> (e.g. core, editor.tools, patterns.pooling)
+### 2️⃣ Multiple Folder Templates
 
-- Assembly: HTDA.Framework.<ModuleName> and HTDA.Framework.<ModuleName>.Editor
+Built-in templates:
+- General
+- Puzzle
+- (Optional) Hypercasual
 
-- Namespace root: HTDA.Framework.<ModuleName>
+You can:
+- Create config from template
+- Export your own template with metadata
+- Store project-level templates
 
-## Notes
+Templates support metadata:
+```json
+{
+  "meta": {
+    "id": "puzzle",
+    "name": "Puzzle",
+    "description": "Puzzle game layout",
+    "tags": ["puzzle", "mobile"],
+    "version": "1.0.0"
+  },
+  "config": { ... }
+}
+```
+---
 
-- Keep Core packages small and stable.
+### 3️⃣ Folder Generation
 
-- Move optional utilities/patterns/extensions into separate modules.
+Supports:
+- Flat folder list (folders)
+- Group-based structure (folderGroups)
+- Token replacement ({ProjectName})
 
+Example:
+```json
+{
+  "folderGroups": [
+    {
+      "root": "Assets/__{ProjectName}",
+      "paths": [
+        "Art",
+        "Audio",
+        "Code/Scripts",
+        "Scenes"
+      ]
+    }
+  ]
+}
+```
+
+---
+
+### 4️⃣ Install Framework Modules
+
+Uses:
+```
+git submodule add <url> <path>
+```
+
+Recommended path:
+
+```
+Packages/com.htda.framework.core
+```
+
+Requirements:
+- Git installed
+- Project initialized as git repository
+
+--- 
+
+### 5️⃣ Bootstrap Scene
+
+Automatically:
+- Creates a new scene
+- Spawns system prefabs
+- Saves scene
+- Adds it to Build Settings (index 0)
+
+---
+
+### 📂 Menu
+```
+HTDA/FastSetup/
+    0 - Create Config (Default)
+    0.1 - Create Config From Template...
+    0.2 - Export Current Config As Template...
+    1 - Run Setup
+    Open Config Folder
+    Open Templates Folder
+```
+
+---
+
+### 🛠 Typical Workflow
+
+1. Install FastSetup package.
+
+2. Initialize project with git init.
+
+3. Create config from template.
+
+4. Adjust config if needed.
+
+5. Run Setup.
+
+6. Start building your game.
+
+---
+
+### 🧩 Extending Templates
+
+You can export your current config as a template:
+```
+HTDA → FastSetup → Export Current Config As Template...
+```
+Templates are stored in:
+```
+ProjectSettings/HTDA/FastSetup/Templates
+```
+
+---
+
+### 📌 Notes
+
+- FastSetup does not modify runtime code.
+
+- It does not depend on HTDA.Framework.Core.
+
+- Safe to remove after project initialization (if desired).
+
+© HTDA Framework
