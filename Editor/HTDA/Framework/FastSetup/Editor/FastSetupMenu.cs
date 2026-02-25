@@ -9,13 +9,42 @@ namespace HTDA.Framework.FastSetup.Editor
     {
         private const string DefaultTemplateId = "general"; // meta.id of General template
 
-        [MenuItem("HTDA/FastSetup/0 - Create Config (Default)", priority = 0)]
+        // ===== TOP LEVEL (simple) =====
+
+        [MenuItem("HTDA/FastSetup/Run Setup", priority = 10)]
+        public static void RunSetup()
+        {
+            var configPath = FastSetupPaths.ConfigFullPath;
+
+            if (!File.Exists(configPath))
+            {
+                var create = EditorUtility.DisplayDialog("FastSetup", "Config not found. Create default config now?", "Create", "Cancel");
+                if (create) CreateConfigDefault();
+                return;
+            }
+
+            if (!JsonFile.TryRead<SetupConfig>(configPath, out var config))
+            {
+                EditorUtility.DisplayDialog("FastSetup", "Config JSON invalid. Please fix it and try again.", "OK");
+                return;
+            }
+
+            FolderGenerator.Generate(config);
+            SceneComposer.Compose(config);
+
+            AssetDatabase.Refresh();
+            Debug.Log("<color=green>[FastSetup] Completed.</color>");
+        }
+
+        // ===== ADVANCED =====
+
+        [MenuItem("HTDA/FastSetup/Advanced/Create Config (Default)", priority = 0)]
         public static void CreateConfigDefault()
         {
             CreateConfigFromTemplateId(DefaultTemplateId);
         }
 
-        [MenuItem("HTDA/FastSetup/0.1 - Create Config From Template...", priority = 1)]
+        [MenuItem("HTDA/FastSetup/Advanced/Create Config From Template...", priority = 1)]
         public static void CreateConfigFromTemplate()
         {
             var templates = SetupTemplateProvider.LoadAllTemplates();
@@ -25,7 +54,6 @@ namespace HTDA.Framework.FastSetup.Editor
                 return;
             }
 
-            // DisplayCustomMenu requires GUIContent[]
             var contents = new GUIContent[templates.Count];
             for (int i = 0; i < templates.Count; i++)
             {
@@ -38,7 +66,6 @@ namespace HTDA.Framework.FastSetup.Editor
                 new Rect(100, 100, 0, 0),
                 contents,
                 0,
-                // IMPORTANT: callback signature is (object userData, string[] options, int selected)
                 (userData, options, selected) =>
                 {
                     var list = (System.Collections.Generic.List<SetupTemplate>)userData;
@@ -51,7 +78,7 @@ namespace HTDA.Framework.FastSetup.Editor
             );
         }
 
-        [MenuItem("HTDA/FastSetup/0.2 - Export Current Config As Template...", priority = 2)]
+        [MenuItem("HTDA/FastSetup/Advanced/Export Current Config As Template...", priority = 2)]
         public static void ExportCurrentConfigAsTemplate()
         {
             var configPath = FastSetupPaths.ConfigFullPath;
@@ -65,40 +92,14 @@ namespace HTDA.Framework.FastSetup.Editor
             ExportTemplateWindow.Open(json);
         }
 
-        [MenuItem("HTDA/FastSetup/1 - Run Setup", priority = 10)]
-        public static void RunSetup()
-        {
-            var configPath = FastSetupPaths.ConfigFullPath;
-
-            if (!File.Exists(configPath))
-            {
-                var create = EditorUtility.DisplayDialog("FastSetup", "Config not found. Create it now?", "Create", "Cancel");
-                if (create) CreateConfigDefault();
-                return;
-            }
-
-            if (!JsonFile.TryRead<SetupConfig>(configPath, out var config))
-            {
-                EditorUtility.DisplayDialog("FastSetup", "Config JSON invalid. Please fix it and try again.", "OK");
-                return;
-            }
-
-            FolderGenerator.Generate(config);
-            ModuleInstaller.Install(config);
-            SceneComposer.Compose(config);
-
-            AssetDatabase.Refresh();
-            Debug.Log("<color=green>[FastSetup] Completed.</color>");
-        }
-
-        [MenuItem("HTDA/FastSetup/Open Config Folder", priority = 50)]
+        [MenuItem("HTDA/FastSetup/Advanced/Open Config Folder", priority = 50)]
         public static void OpenConfigFolder()
         {
             FastSetupPaths.EnsureConfigDirectory();
             EditorUtility.RevealInFinder(Path.GetDirectoryName(FastSetupPaths.ConfigFullPath));
         }
 
-        [MenuItem("HTDA/FastSetup/Open Templates Folder", priority = 51)]
+        [MenuItem("HTDA/FastSetup/Advanced/Open Templates Folder", priority = 51)]
         public static void OpenTemplatesFolder()
         {
             FastSetupPaths.EnsureProjectTemplatesDirectory();
@@ -117,7 +118,6 @@ namespace HTDA.Framework.FastSetup.Editor
                 }
             }
 
-            // fallback: open picker
             CreateConfigFromTemplate();
         }
 

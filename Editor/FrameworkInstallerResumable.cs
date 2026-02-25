@@ -53,19 +53,6 @@ namespace HTDA.Framework.FastSetup.Editor
             EditorApplication.delayCall += Resume;
         }
 
-        [MenuItem("HTDA/FastSetup/Install Framework (Resumable)")]
-        public static void InstallMenu()
-        {
-            // Default: master for your repos (you can change)
-            InstallAll(gitRef: "master", includeOptional: false);
-        }
-
-        [MenuItem("HTDA/FastSetup/Install Framework + Optional (Resumable)")]
-        public static void InstallMenuWithOptional()
-        {
-            InstallAll(gitRef: "master", includeOptional: true);
-        }
-
         public static void InstallAll(string gitRef, bool includeOptional)
         {
             if (EditorPrefs.GetBool(Key_IsRunning, false))
@@ -76,8 +63,6 @@ namespace HTDA.Framework.FastSetup.Editor
             }
 
             _gitRef = (gitRef ?? "").Trim();
-            if (string.IsNullOrEmpty(_gitRef))
-                _gitRef = "master";
 
             var selected = Packages.Where(p => includeOptional || !p.Optional).ToArray();
 
@@ -173,6 +158,17 @@ namespace HTDA.Framework.FastSetup.Editor
             _addReq = Client.Add(id);
             EditorApplication.update += PollAdd;
         }
+        
+        [MenuItem("HTDA/FastSetup/Clear Installer State")]
+        public static void ClearInstallerState()
+        {
+            EditorPrefs.DeleteKey("HTDA.FastSetup.Install.IsRunning");
+            EditorPrefs.DeleteKey("HTDA.FastSetup.Install.GitRef");
+            EditorPrefs.DeleteKey("HTDA.FastSetup.Install.Index");
+            EditorPrefs.DeleteKey("HTDA.FastSetup.Install.Queue");
+
+            Debug.Log("[FastSetup] Cleared installer state.");
+        }
 
         private static void PollAdd()
         {
@@ -203,13 +199,6 @@ namespace HTDA.Framework.FastSetup.Editor
             // to ensure skip logic works even if dependencies auto installed.
             _listReq = Client.List(true);
             EditorApplication.update += PollList;
-        }
-
-        [MenuItem("HTDA/FastSetup/Cancel Framework Install")]
-        public static void Cancel()
-        {
-            Debug.LogWarning("[FastSetup] Cancel install requested.");
-            StopAndClear(keepQueue: true);
         }
 
         private static void StopAndClear(bool keepQueue = true)
